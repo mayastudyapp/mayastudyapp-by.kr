@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - MAYA STUDY APP by KR</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(to bottom, #e0f7fa, #b2ebf2); /* Light teal gradient background */
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Container styles */
+        .container {
+            max-width: 90%;
+            width: 650px; /* Increased width for better content spacing */
+            padding: 40px;
+            background: #ffffff; /* White background for the card */
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: scaleUp 1s ease-out;
+            margin: 20px auto; /* Centered container with margin for scroll */
+            z-index: 1;
+        }
+
+        /* Animation for scaling up */
+        @keyframes scaleUp {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Add an animated border */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 162, 255, 0.6);
+            box-shadow: 0 0 15px rgba(0, 162, 255, 0.6);
+            z-index: -1; /* Ensure it is behind the content */
+            animation: borderPulse 2s infinite;
+        }
+
+        /* Border pulse animation */
+        @keyframes borderPulse {
+            0%, 100% { border-color: rgba(0, 162, 255, 0.6); }
+            50% { border-color: rgba(0, 162, 255, 0.2); }
+        }
+
+        /* Language selector styles */
+        .language-selector {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 5px 10px;
+            z-index: 2;
+        }
+
+        .language-selector select {
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            color: #003366; /* Dark navy blue */
+            padding: 5px;
+            cursor: pointer;
+            appearance: none;
+            width: 120px; /* Fixed width for dropdown */
+        }
+
+        .language-selector::after {
+            content: '▼';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            color: #003366;
+        }
+
+        /* Logo styles */
+        .logo img {
+            max-width: 600px; /* Increased logo size */
+            height: auto;
+            margin-bottom: 20px;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        /* Animation for fading in down */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header styles */
+        h1 {
+            font-size: 3rem;
+            color: #003366; /* Dark navy blue */
+            margin: 0 0 10px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Animation for fading in up */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Paragraph styles */
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            margin: 0 0 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        /* Animation for fading in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Link styles */
+        a {
+            color: #003366; /* Dark navy blue */
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #00aaff; /* Light blue */
+            transform: scale(1.05);
+        }
+
+        /* Contact section styles */
+        .contact {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            color: #003366; /* Dark navy blue */
+            margin: 0 0 10px;
+        }
+
+        .contact a {
+            display: block;
+            margin: 5px 0;
+        }
+
+        /* Social icons styles */
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons img {
+            width: 50px; /* Smaller Instagram icon */
+            height: auto;
+        }
+
+        .social-icons a:hover img {
+            transform: scale(1.1);
+        }
+
+        /* About Us section styles */
+        .about-us {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            color: #003366; /* Dark navy blue */
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .about-us h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #004080; /* Darker navy blue */
+        }
+
+        .about-us p {
+            margin: 10px 0;
+        }
+
+        .about-us ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .about-us li {
+            margin-bottom: 5px;
+        }
+
+        /* Footer styles */
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .social-icons img {
+                width: 40px; /* Smaller social icons on small screens */
+            }
+
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+
+            .language-selector select {
+                width: 100px; /* Adjust width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', // Default language
+                includedLanguages: 'en,ku,ar', // Include languages to translate
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en" selected>English</option>
+            <option value="ku">Kurdish Sorani</option>
+            <option value="ar">Arabic</option>
+        </select>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="logo">
+            <img src="ms.png" alt="MAYA STUDY APP by KR Logo">
+        </div>
+        <h1>Coming Soon!</h1>
+        <p>We’re excited to introduce the MAYA STUDY APP by KR!  a app specialty made for students of grade 9th and 12th of the KRG. Stay tuned for more updates!</p>
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>The MAYA STUDY APP by KR was created by our talented team, led by Kara Twana Ahmed, to serve the students of KRGS. This initiative is proudly supported by a diverse range of organizations including:</p>
+            <ul>
+                <li>Liyana Organization </li>
+                <li> KGS - Kurd genius private school</li>
+                <li>American Corner in Sulaymaniyah</li>
+                <li>Democratic Organizations by the PUK</li>
+                <li> and conected with the U.S. general consulate in Erbil</li>
+            </ul>
+            <p>
+
+            </p>
+        </div>
+        <div class="contact">
+            <p>Contact Us:</p>
+            <a href="tel:+9647741006565">Phone: +964 774 100 6565</a>
+            <p>You can also reach us directly via email at: <a href="mailto:info@mayastudykr.com">info@mayastudykr.com</a></p>
+            <div class="social-icons">
+                <p>follow us on our socials for more and new updates!</p>
+                <a href="https://facebook.com/profile.php?id=61561789284846" target="_blank">
+                    <img src="fac.png" alt="Facebook Logo">
+                </a>
+                <a href="https://instagram.com/mayastudyapp_kr.co" target="_blank">
+                    <img src="ins.png" alt="Instagram Logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Projects by KR. All rights reserved.</p>
+    </div>
+</body>
+</html>
